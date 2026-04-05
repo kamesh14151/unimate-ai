@@ -18,13 +18,14 @@ interface ChatWindowProps {
   onClose?: () => void;
 }
 
-const WELCOME_MESSAGE = `Hi! 👋 I'm the **ABC University** admission assistant.\n\nAsk me about courses, fees, eligibility, or admission dates!`;
+const WELCOME_MESSAGE = `Hi! 👋 I'm the **Meow University Admission Enquiries Assistant**.\n\nI can instantly help with **admission procedure, eligibility, deadlines, fees, and required documents**.`;
 
 const ChatWindow = ({ onClose }: ChatWindowProps) => {
   const [messages, setMessages] = useState<Message[]>([
     { role: "assistant", content: WELCOME_MESSAGE },
   ]);
   const [isLoading, setIsLoading] = useState(false);
+  const activeRequestRef = useRef<number | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -49,8 +50,13 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
   }, []);
 
   const sendMessage = async (content: string) => {
+    if (isLoading) return;
+
     const userMsg: Message = { role: "user", content };
     const newMessages = [...messages, userMsg];
+    const requestId = Date.now();
+
+    activeRequestRef.current = requestId;
     setMessages(newMessages);
     setIsLoading(true);
 
@@ -64,12 +70,15 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
       });
 
       if (error) throw error;
+      if (activeRequestRef.current !== requestId) return;
 
       const botReply = data?.reply || "Sorry, I couldn't process that request.";
       const assistantMsg: Message = { role: "assistant", content: botReply };
       setMessages([...newMessages, assistantMsg]);
       saveToHistory(content, botReply);
     } catch (err: any) {
+      if (activeRequestRef.current !== requestId) return;
+
       console.error("Chat error:", err);
       const errorMsg = err?.message?.includes("429")
         ? "Rate limit reached. Please wait a moment."
@@ -77,11 +86,23 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
       toast.error(errorMsg);
       setMessages([...newMessages, { role: "assistant", content: errorMsg }]);
     } finally {
-      setIsLoading(false);
+      if (activeRequestRef.current === requestId) {
+        activeRequestRef.current = null;
+        setIsLoading(false);
+      }
     }
   };
 
+  const handleStop = () => {
+    if (!isLoading) return;
+    activeRequestRef.current = null;
+    setIsLoading(false);
+    toast.message("Response stopped");
+  };
+
   const handleClear = () => {
+    activeRequestRef.current = null;
+    setIsLoading(false);
     setMessages([{ role: "assistant", content: WELCOME_MESSAGE }]);
   };
 
@@ -96,7 +117,7 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
             <GraduationCap className="w-4 h-4 text-primary-foreground" />
           </div>
           <div>
-            <h2 className="text-sm font-semibold leading-tight">ABC University</h2>
+            <h2 className="text-sm font-semibold leading-tight">Meow University</h2>
             <p className="text-[11px] text-muted-foreground leading-tight">Admission Assistant</p>
           </div>
         </div>
@@ -134,9 +155,9 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
               <GraduationCap className="w-6 h-6 text-muted-foreground" />
             </div>
             <div className="text-center space-y-1">
-              <h3 className="text-sm font-semibold">How can I help?</h3>
+              <h3 className="text-sm font-semibold">University Admission Enquiries</h3>
               <p className="text-xs text-muted-foreground">
-                Ask about courses, fees, or admissions
+                Ask about procedures, eligibility, deadlines, fees, and documents
               </p>
             </div>
             <QuickQuestions onSelect={sendMessage} />
@@ -152,11 +173,9 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
       </div>
 
       {/* Input */}
-      {hasConversation && (
-        <div className="border-t border-border pt-2">
-          <InputBox onSend={sendMessage} disabled={isLoading} />
-        </div>
-      )}
+      <div className="border-t border-border pt-2 bg-[var(--aui-surface)]">
+        <InputBox onSend={sendMessage} onStop={handleStop} disabled={isLoading} />
+      </div>
     </div>
   );
 };

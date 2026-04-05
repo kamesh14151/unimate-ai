@@ -5,10 +5,10 @@ interface QuickQuestionsProps {
 }
 
 const questions = [
-  "What courses are available?",
-  "What is the fee structure?",
-  "Eligibility for B.Tech?",
-  "When do admissions start?",
+  "What is the admission procedure?",
+  "What documents are required for admission?",
+  "Who is eligible for B.Tech admission?",
+  "What are the admission start and deadline dates?",
 ];
 
 const QuickQuestions = ({ onSelect }: QuickQuestionsProps) => (

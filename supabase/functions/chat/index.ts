@@ -7,31 +7,58 @@ const corsHeaders = {
 };
 
 const ADMISSION_DATA = `{
-  "university": "ABC University",
+  "university": "Meow University",
   "courses": [
     {"name": "B.Tech", "duration": "4 years", "eligibility": "12th with Physics, Chemistry, Mathematics", "fees": "₹1,20,000 per year"},
     {"name": "B.Sc Computer Science", "duration": "3 years", "eligibility": "12th with Mathematics", "fees": "₹60,000 per year"},
     {"name": "MBA", "duration": "2 years", "eligibility": "Any degree + entrance exam", "fees": "₹1,50,000 per year"}
   ],
-  "admission": {"start_date": "May 1", "end_date": "July 31", "mode": "Online"},
-  "contact": {"phone": "+91 9876543210", "email": "admissions@abcuniversity.edu"}
+  "admission": {
+    "start_date": "May 1",
+    "end_date": "July 31",
+    "mode": "Online",
+    "procedure": [
+      "Create an application account on the admissions portal",
+      "Fill in personal, academic, and program preference details",
+      "Upload required documents",
+      "Pay the application fee",
+      "Submit and track application status",
+      "Attend counseling/verification if shortlisted"
+    ],
+    "required_documents": [
+      "10th and 12th marksheets",
+      "Transfer certificate",
+      "Government photo ID",
+      "Passport-size photographs",
+      "Category certificate (if applicable)",
+      "Entrance scorecard (if applicable)"
+    ]
+  },
+  "contact": {"phone": "+91 9876543210", "email": "admissions@meowuniversity.edu"}
 }`;
 
-const SYSTEM_PROMPT = `You are a university admission assistant for ABC University.
+const SYSTEM_PROMPT = `You are a university admission assistant for Meow University.
 Only answer questions about:
+- Admission procedure
 - Courses
 - Fees
 - Eligibility
-- Admission dates
+- Admission dates and deadlines
+- Required documents
 - Contact details
 
 Use this data to answer:
 ${ADMISSION_DATA}
 
 If a question is out of scope, reply:
-"I can only help with university admission queries. Feel free to ask about courses, fees, eligibility, admission dates, or contact details!"
+"I can only help with university admission queries. Feel free to ask about procedure, courses, fees, eligibility, deadlines, required documents, or contact details!"
 
-Be friendly, concise, and use markdown formatting for readability. Use bullet points and bold text where appropriate.`;
+Response rules:
+- Be friendly, concise, and use markdown formatting for readability.
+- Prefer bullet points for steps and lists.
+- When asked about process, provide the procedure in clear numbered steps.
+- When asked about deadlines, explicitly mention both start and end dates.
+- If data is unavailable in the provided dataset, clearly say it is not available and share contact details.`;
 
 serve(async (req) => {
   if (req.method === "OPTIONS") {

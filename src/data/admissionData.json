@@ -1,5 +1,5 @@
 {
-  "university": "ABC University",
+  "university": "Meow University",
   "courses": [
     {
       "name": "B.Tech",
@@ -27,6 +27,6 @@
   },
   "contact": {
     "phone": "+91 9876543210",
-    "email": "admissions@abcuniversity.edu"
+    "email": "admissions@meowuniversity.edu"
   }
 }
