@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meow University - Admissions</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="meow-favicon.svg">
+    <script src="js/chat.js" defer></script>
+</head>
+<body>
+    <div class="min-h-screen bg-background text-foreground">
+        <div class="border-b border-border/60 admissions-gradient">
+            <div class="mx-auto max-w-6xl px-4 pb-10 pt-6">
+                <header class="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border/80 bg-background/70 px-4 py-3 backdrop-blur">
+                    <a href="index.html" class="flex items-center gap-2.5">
+                        <div class="grid h-9 w-9 place-items-center rounded-xl bg-primary text-primary-foreground">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                        </div>
+                        <div>
+                            <p class="font-semibold leading-tight">Meow University</p>
+                            <p class="text-xs text-muted-foreground">Excellence in Learning & Research</p>
+                        </div>
+                    </a>
+                    <nav class="hidden items-center gap-5 md:flex">
+                        <a href="programs.html" class="px-2 py-1 text-sm text-muted-foreground transition-colors hover:text-foreground">Programs</a>
+                        <a href="admissions.html" class="px-2 py-1 text-sm text-foreground font-medium transition-colors">Admissions</a>
+                        <a href="campus.html" class="px-2 py-1 text-sm text-muted-foreground transition-colors hover:text-foreground">Campus</a>
+                    </nav>
+                    <a href="admissions.html" class="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90">
+                        Apply Now
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </header>
+
+                <section class="mt-10 max-w-3xl">
+                    <p class="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Admissions</p>
+                    <h1 class="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">Your complete admission guide for Meow University</h1>
+                    <p class="mt-4 text-base text-muted-foreground">
+                        Get clear steps, timeline, and requirements for a smooth admission process. For instant query support, use the admission chatbot in the bottom-right corner.
+                    </p>
+                </section>
+            </div>
+        </div>
+
+        <main class="mx-auto max-w-6xl space-y-8 px-4 py-10">
+            <section class="grid gap-4 md:grid-cols-2">
+                <article class="rounded-2xl border border-border bg-card p-5">
+                    <h2 class="text-lg font-semibold">Admission Enquiries Use Case</h2>
+                    <p class="mt-2 text-sm text-muted-foreground">
+                        <strong>Problem:</strong> Students repeatedly ask about admission procedures, eligibility, and deadlines.
+                    </p>
+                    <p class="mt-2 text-sm text-muted-foreground">
+                        <strong>Chatbot Solution:</strong> Instant answers on courses, fees, eligibility, deadlines, and required documents.
+                    </p>
+                </article>
+                <article class="rounded-2xl border border-border bg-card p-5">
+                    <h2 class="text-lg font-semibold">Required Documents</h2>
+                    <ul class="mt-3 space-y-2 text-sm text-foreground">
+                        <li class="rounded-lg bg-muted/40 px-3 py-2">10th and 12th marksheets</li>
+                        <li class="rounded-lg bg-muted/40 px-3 py-2">Transfer certificate</li>
+                        <li class="rounded-lg bg-muted/40 px-3 py-2">Government photo ID</li>
+                        <li class="rounded-lg bg-muted/40 px-3 py-2">Passport-size photographs</li>
+                        <li class="rounded-lg bg-muted/40 px-3 py-2">Category certificate (if applicable)</li>
+                        <li class="rounded-lg bg-muted/40 px-3 py-2">Entrance scorecard (if applicable)</li>
+                    </ul>
+                </article>
+            </section>
+
+            <section class="rounded-2xl border border-border bg-muted/20 p-5">
+                <h2 class="text-lg font-semibold">Admission Timeline</h2>
+                <div class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                    <article class="rounded-xl border border-border bg-background p-4">
+                        <p class="text-xs font-semibold uppercase tracking-wider text-primary">May</p>
+                        <h3 class="mt-1 text-sm font-semibold">Applications Open</h3>
+                        <p class="mt-1 text-xs text-muted-foreground">Online portal opens for all UG/PG programs.</p>
+                    </article>
+                    <article class="rounded-xl border border-border bg-background p-4">
+                        <p class="text-xs font-semibold uppercase tracking-wider text-primary">June</p>
+                        <h3 class="mt-1 text-sm font-semibold">Document Verification</h3>
+                        <p class="mt-1 text-xs text-muted-foreground">Eligibility and marksheet validation window.</p>
+                    </article>
+                    <article class="rounded-xl border border-border bg-background p-4">
+                        <p class="text-xs font-semibold uppercase tracking-wider text-primary">July</p>
+                        <h3 class="mt-1 text-sm font-semibold">Merit & Counseling</h3>
+                        <p class="mt-1 text-xs text-muted-foreground">Merit list publication and seat allotment rounds.</p>
+                    </article>
+                    <article class="rounded-xl border border-border bg-background p-4">
+                        <p class="text-xs font-semibold uppercase tracking-wider text-primary">August</p>
+                        <h3 class="mt-1 text-sm font-semibold">Enrollment</h3>
+                        <p class="mt-1 text-xs text-muted-foreground">Fee confirmation, orientation, and classes begin.</p>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <!-- Chat Widget -->
+        <div id="chat-widget-container" class="fixed bottom-6 right-6 z-50">
+            <div id="chat-window" class="rounded-2xl shadow-2xl border border-border overflow-hidden">
+                <div class="flex items-center justify-between px-4 py-3 border-b border-border bg-muted/30">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-8 h-8 rounded-xl bg-primary flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                        </div>
+                        <div>
+                            <h2 class="text-sm font-semibold leading-tight">Meow University</h2>
+                            <p class="text-[11px] text-muted-foreground leading-tight">Admission Assistant</p>
+                        </div>
+                    </div>
+                    <button onclick="toggleChat()" class="p-1.5 rounded-lg hover:bg-muted text-muted-foreground">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                    </button>
+                </div>
+                <div id="chat-messages" class="flex-1 overflow-y-auto py-4 flex flex-col gap-3">
+                    <!-- Messages will be appended here -->
+                </div>
+                <div id="chat-input-container" class="border-t border-border pt-2 bg-background">
+                    <div class="flex items-center gap-2 px-4 py-2">
+                        <textarea id="chat-input" placeholder="Type a message..." rows="1" class="flex-1"></textarea>
+                        <button onclick="sendMessage()" class="w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <button onclick="toggleChat()" class="chat-toggle-btn rounded-full bg-primary text-primary-foreground shadow-lg flex items-center justify-center hover:shadow-xl transition-shadow">
+                <div id="chat-toggle-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+                </div>
+            </button>
+        </div>
+    </div>
+</body>
+</html>
